@@ -975,6 +975,12 @@ GCOVR_CONFIG_OPTIONS = [
         action="store_true",
     ),
     GcovrConfigOption(
+        "gcov_output_dir", ["--gcov-output-dir"], config='gcov-output-dir',
+        group="gcov_options",
+        help="Output gcov files to the specified directory. Requires keep option ",
+        default="~/"
+    ),
+    GcovrConfigOption(
         "delete", ["-d", "--delete"], config='delete-gcov-files',
         group="gcov_options",
         help="Delete gcda files after processing. Default: {default!s}.",

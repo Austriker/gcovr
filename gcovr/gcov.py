@@ -709,6 +709,16 @@ def run_gcov_and_process_files(
 
     if not options.keep:
         toerase.update(all_gcov_files)
+    else:
+
+        if not os.path.isdir(options.gcov_output_dir):
+            os.makedirs(options.gcov_output_dir, exist_ok=True)
+
+        for gcov_file in all_gcov_files:
+            import shutil
+            gcov_filename = os.path.basename(gcov_file)
+            gcov_dst = os.path.join(options.gcov_output_dir, gcov_filename.replace("#", "__"))
+            shutil.copyfile(gcov_file, gcov_dst)
 
     return done
 
